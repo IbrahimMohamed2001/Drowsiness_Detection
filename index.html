@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Datatable Example</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        var table = $("#table").DataTable({
+          "ajax": {
+            "url": "/data",
+            "dataSrc": "data"
+          },
+          "columns": [
+            {"message": "message"},
+            {"time": "time"},
+          ]
+        });
+        setInterval(function () {
+          table.ajax.reload();
+        }, 5000);
+      });
+    </script>
+  </head>
+  <body>
+    <table id="table" class="display">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+    </table>
+  </body>
+</html>
